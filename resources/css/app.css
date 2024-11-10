@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+    .delete-button-rounded{
+        @apply p-2 text-white duration-300 bg-red-500 rounded-full hover:border hover:border-red-500  hover:text-red-500 hover:bg-white drop-shadow-lg
+    }
+
+    .edit-button-rounded{
+        @apply p-2 text-white duration-300 bg-blue-500 rounded-full hover:border hover:border-blue-500  hover:text-blue-500 hover:bg-white drop-shadow-lg
+    }
+
+    .see-button-rounded{
+        @apply p-2 text-blue-500 duration-300 bg-white rounded-full border border-blue-500  hover:text-white hover:bg-blue-500 drop-shadow-lg
+    }
+
+    .main-button{
+        @apply btn btn-primary rounded-2xl font-semibold  transition-all duration-500
+    }
+
+    .main-card{
+        @apply px-5 min-w-56 py-5 rounded-2xl border transition-all duration-500 hover:scale-105 border-blue-200 bg-gradient-to-tr from-white to-blue-100 drop-shadow-md relative overflow-hidden
+    }
+    
+    .stats-decoration{
+        @apply absolute right-[-70px] bottom-[-70px] transition-all duration-500 w-28 text-blue-800/40
+    }
+
+    .main-card h1{
+        @apply text-xs font-semibold font-sans text-neutral-500
+    }
+
+    .main-card p{
+        @apply text-2xl font-bold font-sans text-blue-700
+    }
+
+    .error-button{
+        @apply btn btn-primary rounded-2xl font-semibold bg-red-600 hover:bg-red-700 border-none hover:border-none text-white
+    }
+
+    .secondary-button{
+        @apply btn btn-neutral hover:bg-neutral-300 bg-neutral-100 border-neutral-300 text-neutral-500 hover:text-neutral-800 hover:border-neutral-500 rounded-2xl font-semibold
+    }
+
+    .chat-bubble{
+        @apply bg-neutral-200 text-neutral-700
+    }
+
+    .desc{
+        @apply tracking-wide text-neutral-600
+    }
+
+    .title{
+        @apply text-2xl font-bold tracking-wide
+    }
+
+    .form-control{
+        @apply flex-1 mt-5
+    }
+
+    .error{
+        @apply pl-2
+    }
+
+    .input-bordered{
+        @apply border-neutral-300 bg-neutral-100 rounded-2xl
+    }
+
+    .textarea-bordered{
+        @apply border-neutral-300 bg-neutral-100 text-[12.5px] rounded-2xl
+    }
+
+    .file-input-bordered{
+        @apply border-neutral-300 bg-neutral-100 text-[12.5px] rounded-2xl
+    }
+
+    .input-cluster{
+        @apply flex space-x-5 w-full items-start
+    }
+
+    .without-label{
+        @apply mt-14
+    }
+
+}
