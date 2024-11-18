@@ -37,7 +37,7 @@ class CategoryController extends Controller
         $validated = $request->validated();
         
         if ($request->hasFile('img')) {
-            $imagePath = $request->file('img')->store('images', 'public');
+            $imagePath = $request->file('img')->store('public/images', 'public');
             $fullPath = storage_path('app/public/' . $imagePath);
             $validated['img'] = '/storage/' . $imagePath;
         }
@@ -68,13 +68,10 @@ class CategoryController extends Controller
 
     public function update(CategoryRequest $request, Category $category)
     {
-        Log::info('updating here');
         try {
             $validated = $request->validated();
             
-            // Handle image upload
             if ($request->hasFile('img')) {
-                // Delete old image if exists
                 if ($category->img && Storage::exists($category->img)) {
                     Storage::delete($category->img);
                 }

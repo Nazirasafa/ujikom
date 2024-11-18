@@ -13,128 +13,98 @@
                         <x-heroicon-o-arrow-left class="w-5" />
                         Back
                     </a>
-                    <form action="{{ route('dashboard.events.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('dashboard.events.store') }}" method="POST" enctype="multipart/form-data" class="mt-6 space-y-6">
                         @csrf
 
-                        <div class="input-cluster">
-                            {{-- name --}}
-                            <label class="w-full max-w-xs form-control">
-                                <div class="label">
-                                    <span class="label-text">Event's Name</span>
-                                </div>
-                                <input type="text" name="name" placeholder="Type here"
-                                    class="w-full max-w-xs input input-bordered" 
-                                    value="{{ old('name') }}" />
-                                @error('name')
-                                    <div class="label error">
-                                        <span class="text-red-500 label-text-alt">{{ $message }}</span>
-                                    </div>
-                                @enderror
-                            </label>
-
-                            {{-- short desc --}}
-                            <label class="w-full max-w-xs form-control">
-                                <div class="label">
-                                    <span class="label-text">Short Description</span>
-                                </div>
-                                <input type="text" name="short_desc" placeholder="Summarize the event's here"
-                                    class="w-full max-w-xs input input-bordered"
-                                    value="{{ old('short_desc') }}" />
-                                @error('short_desc')
-                                    <div class="label error">
-                                        <span class="text-red-500 label-text-alt">{{ $message }}</span>
-                                    </div>
-                                @enderror
-                            </label>
+                        {{-- Event Name --}}
+                        <div class="w-full">
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-700">Event's Name</label>
+                            <input type="text" name="name" id="name" placeholder="Type here"
+                                class="w-full input input-bordered" value="{{ old('name') }}" />
+                            @error('name')
+                                <span class="text-sm text-red-500">{{ $message }}</span>
+                            @enderror
                         </div>
 
-                        {{-- desc --}}
-                        <label class="form-control">
-                            <div class="label">
-                                <span class="label-text">Full Description</span>
-                            </div>
-                            <textarea name="desc" class="h-24 textarea textarea-bordered" 
+                        {{-- Short Description --}}
+                        <div class="w-full">
+                            <label for="short_desc" class="block mb-2 text-sm font-medium text-gray-700">Short Description</label>
+                            <input type="text" name="short_desc" id="short_desc" placeholder="Summarize the event's here"
+                                class="w-full input input-bordered" value="{{ old('short_desc') }}" />
+                            @error('short_desc')
+                                <span class="text-sm text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        {{-- Full Description --}}
+                        <div class="w-full">
+                            <label for="desc" class="block mb-2 text-sm font-medium text-gray-700">Full Description</label>
+                            <textarea name="desc" id="desc" class="w-full h-24 textarea textarea-bordered" 
                                 placeholder="Type event's description here">{{ old('desc') }}</textarea>
                             @error('desc')
-                                <div class="label error">
-                                    <span class="text-red-500 label-text-alt">{{ $message }}</span>
-                                </div>
+                                <span class="text-sm text-red-500">{{ $message }}</span>
                             @enderror
-                        </label>
-
-                        <div class="input-cluster">
-                            {{-- img --}}
-                            <label class="w-full max-w-xs form-control">
-                                <div class="label">
-                                    <span class="label-text">Event's logo</span>
-                                </div>
-                                <input type="file" name="img"
-                                    class="w-full max-w-xs file-input file-input-bordered"
-                                    accept="image/*" />
-                                @error('img')
-                                    <div class="label error">
-                                        <span class="text-red-500 label-text-alt">{{ $message }}</span>
-                                    </div>
-                                @enderror
-                            </label>
-
-                            {{-- social media --}}
-                            <label class="w-full max-w-xs form-control">
-                                <div class="label">
-                                    <span class="label-text">Social media</span>
-                                </div>
-                                <input type="text" name="social_media"
-                                    placeholder="Paste your social media profile link here"
-                                    class="w-full max-w-xs input input-bordered"
-                                    value="{{ old('social_media') }}" />
-                                @error('social_media')
-                                    <div class="label error">
-                                        <span class="text-red-500 label-text-alt">{{ $message }}</span>
-                                    </div>
-                                @enderror
-                            </label>
                         </div>
 
-                        {{-- time --}}
-                        <div class="input-cluster">
-                            {{-- date --}}
-                            <label class="w-full max-w-xs form-control">
-                                <div class="label">
-                                    <span class="label-text">Event's date</span>
-                                </div>
-                                <input name="date" type="date"
-                                    class="w-full max-w-xs text-neutral-500 input input-bordered"
-                                    value="{{ old('date') }}" />
-                                @error('date')
-                                    <div class="label error">
-                                        <span class="text-red-500 label-text-alt">{{ $message }}</span>
-                                    </div>
-                                @enderror
-                            </label>
-                            <label class="w-full max-w-xs form-control without-label">
-                                <input name="time_start" type="text" placeholder="Time Start (ex. 10)"
-                                    class="w-full max-w-xs input input-bordered"
-                                    value="{{ old('time_start') }}" />
-                                @error('time_start')
-                                    <div class="label error">
-                                        <span class="text-red-500 label-text-alt">{{ $message }}</span>
-                                    </div>
-                                @enderror
-                            </label>
-
-                            <label class="w-full max-w-xs form-control without-label">
-                                <input name="time_end" type="text" placeholder="Time End (ex. 14)"
-                                    class="w-full max-w-xs input input-bordered"
-                                    value="{{ old('time_end') }}" />
-                                @error('time_end')
-                                    <div class="label error">
-                                        <span class="text-red-500 label-text-alt">{{ $message }}</span>
-                                    </div>
-                                @enderror
-                            </label>
+                        {{-- Event Date --}}
+                        <div class="w-full">
+                            <label for="date" class="block mb-2 text-sm font-medium text-gray-700">Event Date</label>
+                            <input name="date" type="date" id="date"
+                                class="w-full text-neutral-500 input input-bordered" value="{{ old('date') }}" />
+                            @error('date')
+                                <span class="text-sm text-red-500">{{ $message }}</span>
+                            @enderror
                         </div>
 
-                        <button class="mt-8 text-xl min-w-lg main-button" type="submit">Submit Event</button>
+                        {{-- Social Media --}}
+                        <div class="w-full">
+                            <label for="social_media" class="block mb-2 text-sm font-medium text-gray-700">Social Media</label>
+                            <input type="text" name="social_media" id="social_media"
+                                placeholder="Paste your social media profile link here"
+                                class="w-full input input-bordered" value="{{ old('social_media') }}" />
+                            @error('social_media')
+                                <span class="text-sm text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                          {{-- Time Start --}}
+                          <div class="w-full">
+                            <label for="time_start" class="block text-sm font-medium text-gray-700">Time Start</label>
+                            <input type="text" name="time_start" id="time_start" placeholder="Time Start"
+                                class="w-full mt-1 input input-bordered"
+                                value="{{ old('time_start' ) }}" />
+                            @error('time_start')
+                                <span class="text-sm text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        {{-- Time End --}}
+                        <div class="w-full">
+                            <label for="time_end" class="block text-sm font-medium text-gray-700">Time End</label>
+                            <input type="text" name="time_end" id="time_end" placeholder="Time End"
+                                class="w-full mt-1 input input-bordered"
+                                value="{{ old('time_end' ) }}" />
+                            @error('time_end')
+                                <span class="text-sm text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        
+                    
+                    
+
+                        {{-- Event Logo --}}
+                        <div class="w-full">
+                            <label for="img" class="block mb-2 text-sm font-medium text-gray-700">Event's Logo</label>
+                            <input type="file" name="img" id="img" class="w-full file-input file-input-bordered" accept="image/*" />
+                            @error('img')
+                                <span class="text-sm text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        {{-- Submit Button --}}
+                        <div class="flex justify-end pt-4">
+                            <button type="submit" class="px-6 py-2 text-white bg-blue-600 rounded-lg main-button">Submit Event</button>
+                        </div>
                     </form>
                 </div>
             </div>

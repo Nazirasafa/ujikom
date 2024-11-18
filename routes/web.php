@@ -3,14 +3,14 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+Route::get('/', [HomeController::class, 'index'])
+->name('homepage');
 
 Route::prefix('dashboard')->group(function () {
     Route::view('/', 'dashboard')
@@ -54,10 +54,6 @@ Route::prefix('dashboard')->group(function () {
         Route::delete('/{news}/{category}', [NewsController::class, 'destroyCategory'])
             ->middleware(['auth'])
             ->name('dashboard.news.category.destroy');
-
-        Route::delete('/{news}/comment/{comment}', [NewsController::class, 'destroyComment'])
-            ->middleware(['auth'])
-            ->name('dashboard.news.comment.destroy');
     });
 
 

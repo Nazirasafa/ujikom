@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="mx-auto mt-5 bg-white border-b border-gray-100 min-w-[90%] md:min-w-0 w-max rounded-2xl drop-shadow-lg">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 dark:bg-gray-800 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -16,20 +16,23 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('dashboard.news')" :active="request()->routeIs('dashboard.news')" wire:navigate>
-                        {{ __('News') }}
-                    </x-nav-link>
-
                     <x-nav-link :href="route('dashboard.events')" :active="request()->routeIs('dashboard.events')" wire:navigate>
                         {{ __('Events') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('dashboard.categories')" :active="request()->routeIs('dashboard.categories')" wire:navigate>
+                        {{ __('Categories') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('dashboard.galleries')" :active="request()->routeIs('dashboard.galleries')" wire:navigate>
                         {{ __('Galleries') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard.categories')" :active="request()->routeIs('dashboard.categories')" wire:navigate>
-                        {{ __('Categories') }}
+
+                    <x-nav-link :href="route('dashboard.news')" :active="request()->routeIs('dashboard.news')" wire:navigate>
+                        {{ __('News') }}
                     </x-nav-link>
+                    
+                  
                 </div>
             </div>
 

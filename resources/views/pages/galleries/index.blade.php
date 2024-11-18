@@ -20,32 +20,28 @@
                         Create New Gallery
                     </button>
 
-                    <di class="flex flex-wrap justify-center w-full">
+                    <!-- Masonry grid layout for Pinterest style -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                         @foreach ($galleries as $gallery)
-                            <a href={{route('dashboard.galleries.show', $gallery)}} class="relative w-56 m-2 overflow-hidden transition-all duration-500 bg-center bg-cover drop-shadow-lg hover:drop-shadow-2xl h-80 rounded-2xl group hover:scale-110"
-                                style="background-image: url({{ $gallery->img }})">
-                                <h1
-                                    class="z-10 flex items-center justify-center w-full h-full text-center text-white duration-500 bg-black title bg-opacity-30 backdrop-blur-sm group-hover:backdrop-blur-none">
-                                    {{ $gallery->name }}</h1>
+                            <div class="relative overflow-hidden transition-all duration-500 bg-center bg-cover drop-shadow-lg hover:drop-shadow-2xl rounded-2xl group hover:scale-105"
+                                style="background-image: url({{ $gallery->img }}); height: 300px;">
+                                <a href={{ route('dashboard.galleries.show', $gallery) }} class="flex items-center justify-center w-full h-full text-center text-white duration-500 bg-black bg-opacity-30 backdrop-blur-sm group-hover:backdrop-blur-none">
+                                    <h1 class="text-xl font-semibold">{{ $gallery->name }}</h1>
+                                </a>
 
-                                <div class="hidden group-hover:block">
-                                    <button onclick="edit_{{ $gallery->id }}.showModal()"
-                                        class="absolute edit-button-rounded right-12 bottom-5">
-                                        <div class="w-4">
-                                            @svg('heroicon-c-pencil')
-                                        </div>
+                                <!-- Edit and delete buttons appear on hover -->
+                                <div class="absolute bottom-5 right-5 space-x-2 hidden group-hover:flex">
+                                    <button onclick="edit_{{ $gallery->id }}.showModal()" class="edit-button-rounded">
+                                        @svg('heroicon-c-pencil', 'w-5')
                                     </button>
 
-                                    <button onclick="delete{{ $gallery->id }}.showModal()"
-                                        class="absolute delete-button-rounded right-3 bottom-5">
-                                        <div class="w-4">
-                                            @svg('heroicon-s-trash')
-                                        </div>
+                                    <button onclick="delete{{ $gallery->id }}.showModal()" class="delete-button-rounded">
+                                        @svg('heroicon-s-trash', 'w-5')
                                     </button>
                                 </div>
+                            </div>
 
-                            </a>
-
+                            <!-- Edit modal -->
                             <dialog id="edit_{{ $gallery->id }}" class="modal modal-bottom sm:modal-middle">
                                 <div class="flex flex-col items-center px-5 modal-box w-max">
                                     <h3 class="text-lg font-bold">Edit {{ $gallery->name }} Gallery</h3>
@@ -53,7 +49,7 @@
                                         enctype="multipart/form-data" class="flex flex-col items-center w-full">
                                         @csrf
                                         @method('PUT')
-                                        {{-- name --}}
+                                        {{-- Name --}}
                                         <label class="w-full form-control">
                                             <div class="label">
                                                 <span class="label-text">Gallery's Name</span>
@@ -68,11 +64,12 @@
                                             @enderror
                                         </label>
 
+                                        {{-- Description --}}
                                         <label class="w-full form-control">
                                             <div class="label">
                                                 <span class="label-text">Description</span>
                                             </div>
-                                            <textarea name="desc" class="w-full h-24 textarea textarea-bordered" 
+                                            <textarea name="desc" class="w-full h-24 textarea textarea-bordered"
                                                 placeholder="Type event's description here">{{ old('desc', $gallery->desc) }}</textarea>
                                             @error('desc')
                                                 <div class="label error">
@@ -81,35 +78,31 @@
                                             @enderror
                                         </label>
 
-                                        {{-- img --}}
+                                        {{-- Image --}}
                                         <label class="w-full form-control">
                                             <div class="label">
                                                 <span class="label-text">Gallery's Image</span>
                                             </div>
-                                            <input type="file" name="img"
-                                                class="w-full file-input file-input-bordered"
-                                                value="{{ old('img', $gallery->img) }}" accept="image/*" />
+                                            <input type="file" name="img" class="w-full file-input file-input-bordered"
+                                                accept="image/*" />
                                             @error('img')
                                                 <div class="label error">
                                                     <span class="text-red-500 label-text-alt">{{ $message }}</span>
                                                 </div>
                                             @enderror
                                         </label>
-                                        <button class="w-full mt-8 text-xl main-button" type="submit">Update
-                                            Gallery</button>
+                                        <button class="w-full mt-8 text-xl main-button" type="submit">Update Gallery</button>
                                     </form>
 
                                     <div class="w-full mt-3 modal-action">
                                         <form method="dialog" class="flex flex-col items-center w-full">
-                                            <button
-                                                class="w-full shadow-inner btn bg-neutral-200 rounded-2xl">Close</button>
+                                            <button class="w-full shadow-inner btn bg-neutral-200 rounded-2xl">Close</button>
                                         </form>
                                     </div>
                                 </div>
                             </dialog>
 
-
-                            {{-- modal --}}
+                            <!-- Delete modal -->
                             <dialog id="delete{{ $gallery->id }}" class="modal modal-bottom sm:modal-middle">
                                 <div class="flex flex-col items-center justify-center modal-box">
                                     <img src="/assets/images/alert.png" class="object-cover w-40 aspect-square" alt="">
@@ -123,17 +116,15 @@
                                             </button>
                                         </form>
                                         <form method="dialog">
-
                                             <button class="secondary-button">Close</button>
                                         </form>
                                     </div>
                                 </div>
                             </dialog>
                         @endforeach
-                    </di>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     @else
         <div class="flex flex-col items-center justify-center w-full h-[70vh]">
@@ -144,48 +135,43 @@
         </div>
     @endif
 
-
+    <!-- Add Gallery Modal -->
     <dialog id="add_gallery_modal" class="modal modal-bottom sm:modal-middle">
         <div class="flex flex-col items-center px-5 modal-box w-max">
             <h3 class="text-lg font-bold">Add New Gallery</h3>
             <form action="{{ route('dashboard.galleries.store') }}" method="POST" enctype="multipart/form-data"
                 class="flex flex-col items-center w-full">
                 @csrf
-                {{-- name --}}
+                <!-- Name -->
                 <label class="w-full form-control">
                     <div class="label">
                         <span class="label-text">Gallery's Name</span>
                     </div>
-                    <input type="text" name="name" placeholder="Type here" class="w-full input input-bordered"
-                        value="{{ old('name') }}" />
+                    <input type="text" name="name" placeholder="Type here" class="w-full input input-bordered" value="{{ old('name') }}" />
                     @error('name')
                         <div class="label error">
                             <span class="text-red-500 label-text-alt">{{ $message }}</span>
                         </div>
                     @enderror
                 </label>
-                
-
+                <!-- Description -->
                 <label class="w-full form-control">
                     <div class="label">
                         <span class="label-text">Description</span>
                     </div>
-                    <textarea name="desc" class="w-full h-24 textarea textarea-bordered" 
-                        placeholder="Type event's description here">{{ old('desc') }}</textarea>
+                    <textarea name="desc" class="w-full h-24 textarea textarea-bordered" placeholder="Type event's description here">{{ old('desc') }}</textarea>
                     @error('desc')
                         <div class="label error">
                             <span class="text-red-500 label-text-alt">{{ $message }}</span>
                         </div>
                     @enderror
                 </label>
-
-                {{-- img --}}
+                <!-- Image -->
                 <label class="w-full form-control">
                     <div class="label">
                         <span class="label-text">Gallery's Image</span>
                     </div>
-                    <input type="file" name="img" class="w-full file-input file-input-bordered"
-                        accept="image/*" />
+                    <input type="file" name="img" class="w-full file-input file-input-bordered" accept="image/*" />
                     @error('img')
                         <div class="label error">
                             <span class="text-red-500 label-text-alt">{{ $message }}</span>
@@ -202,5 +188,4 @@
             </div>
         </div>
     </dialog>
-
 </x-app-layout>

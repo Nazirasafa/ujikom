@@ -28,8 +28,8 @@ class EventRequest extends FormRequest
             'img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'social_media' => 'required|string',
             'date' => 'required|date_format:Y-m-d|after_or_equal:1920-01-01',
-            'time_start' => 'required|date_format:H:i',
-            'time_end' => 'required|date_format:H:i|after:time_start',
+            'time_start' => 'required|date_format:H:i:s',
+            'time_end' => 'required|date_format:H:i:s|after:time_start',
         ];
     }
 }

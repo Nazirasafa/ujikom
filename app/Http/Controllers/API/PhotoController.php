@@ -16,7 +16,7 @@ class PhotoController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(): JsonResponse
+    public function index()
     {
         $galleries = Gallery::all();
     
@@ -28,7 +28,7 @@ class PhotoController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request): JsonResponse
+    public function store(Request $request)
     {
         $input = $request->all();
    
@@ -53,7 +53,7 @@ class PhotoController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id): JsonResponse
+    public function show($id)
     {
         $gallery = Gallery::find($id);
   
@@ -71,7 +71,7 @@ class PhotoController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gallery $gallery): JsonResponse
+    public function update(Request $request, Gallery $gallery)
     {
         $input = $request->all();
    
@@ -99,7 +99,7 @@ class PhotoController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Gallery $gallery): JsonResponse
+    public function destroy(Gallery $gallery)
     {
         $gallery->delete();
    

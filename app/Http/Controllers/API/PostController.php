@@ -77,8 +77,8 @@ class PostController extends BaseController
 
 
         if ($request->hasFile('img')) {
-            $imagePath = $request->file('img')->store('public/images');
-            $imageUrl = str_replace('public/', 'storage/', $imagePath);
+            $imagePath = $request->file('img')->store('public/images', 'public');
+            $imageUrl =  '/storage/' . $imagePath;
         }
         // Membuat post baru
         $post = Post::create([
@@ -103,7 +103,7 @@ class PostController extends BaseController
      */
     public function show(Request $request, $id)
     {
-        $post = Post::with('categories', 'comments', 'images', 'user')->find($id);
+        $post = Post::with('categories', 'images', 'user')->find($id);
 
         $input = $request->all();
 
@@ -191,9 +191,9 @@ class PostController extends BaseController
         $post->body = $input['body'];
         $post->read_time = $input['read_time'];
         if ($request->hasFile('img')) {
-            $imagePath = $request->file('img')->store('public/images');
-            $imageUrl = str_replace('public/', 'storage/', $imagePath);
-            $post->img = $imageUrl;
+            $imagePath = $request->file('img')->store('public/images', 'public');
+            $fullPath = storage_path('app/public/' . $imagePath);
+            $post->img =  '/storage/' .$imagePath;
             $post->save();
         }
         $post->save();
@@ -217,32 +217,6 @@ class PostController extends BaseController
         return $this->sendResponse([], 'Post deleted successfully.');
     }
 
-
-    public function addComment(Request $request, $postId)
-    {
-
-        $input = $request->all();
-
-        $validator = Validator::make($input, [
-            'name' => 'required|string|max:255',
-            'text' => 'required|string',
-        ]);
-
-        if ($validator->fails()) {
-            return $this->sendError('Validation Error.', $validator->errors());
-        }
-
-        // Cari post berdasarkan ID
-        $post = Post::findOrFail($postId);
-
-        // Tambahkan komentar ke post yang sedang dibuka
-        $post->comments()->create([
-            'name' => $input['name'],
-            'text' => $input['text'],
-        ]);
-
-        return $this->sendResponse(new CommentResource($input), 'Comment added successfully.');
-    }
 
     public function addImage(Request $request, $postId)
     {
@@ -271,54 +245,11 @@ class PostController extends BaseController
         return $this->sendResponse('Photo added successfully.', 'Photo added successfully.');
     }
 
-    public function likePost($postId)
-    {
-        $userId = Auth::id();
-
-        $existingLike = Love::where('post_id', $postId)->where('user_id', $userId)->first();
-
-        if ($existingLike) {
-            return $this->sendError('You have already liked this post.');
-        }
-
-        // If not, add a new like
-        Love::create([
-            'post_id' => $postId,
-            'user_id' => $userId,
-        ]);
-
-        return $this->sendResponse([], 'Post liked successfully.');
-    }
-
-    public function unlikePost($postId)
-    {
-        $userId = Auth::id(); // Get the ID of the currently authenticated user
-
-        // Check if the like exists
-        $existingLike = Love::where('post_id', $postId)->where('user_id', $userId)->first();
-
-        if (!$existingLike) {
-            return $this->sendError('You have not liked this post.');
-        }
-
-        // If the like exists, delete it
-        $existingLike->delete();
-
-        return $this->sendResponse([], 'Post unliked successfully.');
-    }
-
 
     public function deleteImage(Image $image)
     {
         $image->delete();
 
         return $this->sendResponse([], 'Image deleted successfully.');
-    }
-
-    public function deleteComment(Comment $comment)
-    {
-        $comment->delete();
-
-        return $this->sendResponse([], 'Comment deleted successfully.');
     }
 }

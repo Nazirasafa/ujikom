@@ -52,9 +52,9 @@ class GalleryController extends BaseController
         $gallery = Gallery::create($input);
         
         if ($request->hasFile('img')) {
-            $imagePath = $request->file('img')->store('public/images');
-            $imageUrl = str_replace('public/', 'storage/', $imagePath);
-            $gallery->img = $imageUrl;
+            $imagePath = $request->file('img')->store('public/images', 'public');
+            $fullPath = storage_path('app/public/' . $imagePath);
+            $gallery->img =  '/storage/' .$imagePath;
             $gallery->save();
         }
         return $this->sendResponse(new GalleryResource($gallery), 'Gallery created successfully.');
@@ -110,9 +110,9 @@ class GalleryController extends BaseController
         $gallery->name = $input['name'];
         $gallery->desc = $input['desc'];
         if ($request->hasFile('img')) {
-            $imagePath = $request->file('img')->store('public/images');
-            $imageUrl = str_replace('public/', 'storage/', $imagePath);
-            $gallery->img = $imageUrl;
+            $imagePath = $request->file('img')->store('public/images', 'public');
+            $fullPath = storage_path('app/public/' . $imagePath);
+            $gallery->img =  '/storage/' .$imagePath;
             $gallery->save();
         }
 

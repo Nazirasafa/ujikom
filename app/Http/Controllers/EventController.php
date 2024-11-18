@@ -39,6 +39,7 @@ class EventController extends Controller
             ->with('success', 'Event created successfully.');
             
     } catch (\Exception $e) {
+        dd($e);
         return redirect()
             ->back()
             ->withInput()
