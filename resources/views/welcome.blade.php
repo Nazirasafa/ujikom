@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         .hero {
-            background: url('assets/images/oxford.jpg') no-repeat center center;
+            background: url('assets/images/upacara.jpg') no-repeat center center;
             background-size: cover;
             height: 100vh;
             display: flex;
@@ -272,13 +272,13 @@
         <h2 class="mb-4 text-center">School Profile</h2>
         <div class="row">
             <div class="col-md-6">
-                <img src="assets/images/smk.jpeg" alt="School Building" class="rounded img-fluid w-75">
+                <img src="assets/images/drone.jpg" alt="School Building" class="rounded img-fluid w-75">
             </div>
             <div class="col-md-6">
                 <h3>Our Vision & Mission</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>Visi kami adalah Terwujudnya SMK Pusat Keunggulan melalui terciptanya pelajar pancasila yang berbasis teknologi, berwawasan lingkungan dan berkewirausahaan.</p>
                 <h3>History</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>Merupakan sekolah kejuruan berbasis Teknologi Informasi dan Komunikasi. Sekolah ini didirikan dan dirintis pada tahun 2008 kemudian dibuka pada tahun 2009 yang saat ini terakreditasi A</p>
             </div>
         </div>
     </section>
