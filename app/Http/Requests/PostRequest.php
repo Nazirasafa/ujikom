@@ -22,7 +22,7 @@ class PostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:8000',
             'title' => 'required|string|max:255',
             'user_id' => 'sometimes|exists:users,id',
             'body' => 'required|string',

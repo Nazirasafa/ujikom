@@ -35,7 +35,7 @@
                             @foreach ($newses as $news)
                                 <tr class="text-center">
                                     <td class="px-4 py-2 border-b">
-                                        <img src="{{ $news->img }}" alt="News Image" class="w-20 h-20 object-cover rounded-lg">
+                                        <img src="{{ $news->img }}" alt="News Image" class="object-cover w-20 h-20 rounded-lg">
                                     </td>
                                     <td class="px-4 py-2 border-b">{{ Str::limit($news->title, 50) }}</td>
                                     <td class="px-4 py-2 border-b">{{ Str::limit($news->body, 80) }}</td>
@@ -85,7 +85,7 @@
             <h1 class="mt-2 title">No News Yet</h1>
             <p class="mt-1 desc">Let's create your first news to send</p>
 
-            <a class="mt-5 main-button" href="{{ route('dashboard.newses.create') }}">Create Event</a>
+            <a class="mt-5 main-button" href="{{ route('dashboard.news.create') }}">Create News</a>
         </div>
     @endif
 

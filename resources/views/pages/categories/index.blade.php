@@ -19,7 +19,7 @@
                         <x-heroicon-c-plus class="w-5" />
                         Create New Category
                     </button>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+                    <div class="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
                         @foreach ($categories as $category)
                             <div class="relative overflow-hidden transition-all duration-500 bg-center bg-cover drop-shadow-lg hover:drop-shadow-2xl h-80 rounded-2xl group hover:scale-105"
                                 style="background-image: url({{ $category->img }})">
@@ -42,7 +42,78 @@
                                 </div>
                             </div>
 
-                            <!-- Edit and Delete Modals here as in the original code -->
+                            <dialog id="edit_{{ $category->id }}" class="modal modal-bottom sm:modal-middle">
+                                <div class="flex flex-col items-center px-5 modal-box w-max">
+                                    <h3 class="text-lg font-bold">Edit {{ $category->title }} Category</h3>
+                                    <form action={{ route('dashboard.categories.update', $category) }} method="POST"
+                                        enctype="multipart/form-data" class="flex flex-col items-center w-full">
+                                        @csrf
+                                        @method('PUT')
+                                        {{-- name --}}
+                                        <label class="w-full form-control">
+                                            <div class="label">
+                                                <span class="label-text">Category's Name</span>
+                                            </div>
+                                            <input type="text" name="title" placeholder="Type here"
+                                                class="w-full input input-bordered"
+                                                value="{{ old('title', $category->title) }}" />
+                                            @error('name')
+                                                <div class="label error">
+                                                    <span class="text-red-500 label-text-alt">{{ $message }}</span>
+                                                </div>
+                                            @enderror
+                                        </label>
+
+                                        {{-- img --}}
+                                        <label class="w-full form-control">
+                                            <div class="label">
+                                                <span class="label-text">Category's Image</span>
+                                            </div>
+                                            <input type="file" name="img"
+                                                class="w-full file-input file-input-bordered"
+                                                value="{{ old('img', $category->img) }}" accept="image/*" />
+                                            @error('img')
+                                                <div class="label error">
+                                                    <span class="text-red-500 label-text-alt">{{ $message }}</span>
+                                                </div>
+                                            @enderror
+                                        </label>
+                                        <button class="w-full mt-8 text-xl main-button" type="submit">Submit
+                                            Categories</button>
+                                    </form>
+
+                                    <div class="w-full mt-3 modal-action">
+                                        <form method="dialog" class="flex flex-col items-center w-full">
+                                            <button
+                                                class="w-full shadow-inner btn bg-neutral-200 rounded-2xl">Close</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </dialog>
+
+
+                            {{-- modal --}}
+                            <dialog id="delete{{ $category->id }}" class="modal modal-bottom sm:modal-middle">
+                                <div class="flex flex-col items-center justify-center modal-box">
+                                    <img src="/assets/images/alert.webp" class="object-cover w-40 aspect-square"
+                                        alt="">
+                                    <h3 class="w-full text-2xl font-bold text-center">Are you sure?</h3>
+                                    <div class="flex items-center justify-center w-full mt-5 space-x-4 modal-action">
+                                        <form action="{{ route('dashboard.categories.destroy', $category) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-white error-button">
+                                                Delete This Category
+                                            </button>
+                                        </form>
+                                        <form method="dialog">
+
+                                            <button class="secondary-button">Close</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </dialog>
                         @endforeach
                     </div>
                 </div>
@@ -57,6 +128,48 @@
         </div>
     @endif
 
-    <!-- Add Category Modal here as in the original code -->
+    <dialog id="add_category_modal" class="modal modal-bottom sm:modal-middle">
+        <div class="flex flex-col items-center px-5 modal-box w-max">
+            <h3 class="text-lg font-bold">Add New Category</h3>
+            <form action="{{ route('dashboard.categories.store') }}" method="POST" enctype="multipart/form-data"
+                class="flex flex-col items-center w-full">
+                @csrf
+                {{-- name --}}
+                <label class="w-full form-control">
+                    <div class="label">
+                        <span class="label-text">Category's Name</span>
+                    </div>
+                    <input type="text" name="title" placeholder="Type here" class="w-full input input-bordered"
+                        value="{{ old('title') }}" />
+                    @error('name')
+                        <div class="label error">
+                            <span class="text-red-500 label-text-alt">{{ $message }}</span>
+                        </div>
+                    @enderror
+                </label>
+
+                {{-- img --}}
+                <label class="w-full form-control">
+                    <div class="label">
+                        <span class="label-text">Category's Image</span>
+                    </div>
+                    <input type="file" name="img" class="w-full file-input file-input-bordered"
+                        accept="image/*" />
+                    @error('img')
+                        <div class="label error">
+                            <span class="text-red-500 label-text-alt">{{ $message }}</span>
+                        </div>
+                    @enderror
+                </label>
+                <button class="w-full mt-8 main-button" type="submit">Submit Categories</button>
+            </form>
+
+            <div class="w-full mt-3 modal-action">
+                <form method="dialog" class="flex flex-col items-center w-full">
+                    <button class="w-full shadow-inner btn bg-neutral-200 rounded-2xl">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
 
 </x-app-layout>

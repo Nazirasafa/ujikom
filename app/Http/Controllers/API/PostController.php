@@ -4,16 +4,10 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
-use App\Http\Resources\CommentResource;
 use App\Http\Resources\PostResource;
-use App\Models\Comment;
 use App\Models\Image;
-use App\Models\Love;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Post;
-use Carbon\Carbon;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Auth;
 
 class PostController extends BaseController
 {
@@ -77,8 +71,7 @@ class PostController extends BaseController
 
 
         if ($request->hasFile('img')) {
-            $imagePath = $request->file('img')->store('public/images', 'public');
-            $imageUrl =  '/storage/' . $imagePath;
+            $imagePath = $request->file('img')->store('images', 'public');
         }
         // Membuat post baru
         $post = Post::create([
@@ -86,7 +79,7 @@ class PostController extends BaseController
             'user_id' => $input['user_id'],
             'body' => $input['body'],
             'read_time' => $input['read_time'],
-            'img' => $imageUrl,
+            'img' => '/storage/' . $imagePath,
         ]);
 
         // Menambahkan kategori ke post menggunakan attach
@@ -101,26 +94,15 @@ class PostController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id)
+    public function show(Post $post)
     {
-        $post = Post::with('categories', 'images', 'user')->find($id);
+        $post = Post::with('categories', 'images', 'user')->where('id', $post->id)->first();
 
-        $input = $request->all();
-
-        $validator = Validator::make($input, [
-            'user_id' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return $this->sendError('Validation Error.', $validator->errors());
+      
+        if (!$post) {
+            return $this->sendError('Post not found.', 404);
         }
-
-        $userId = $input['user_id'];
-
-
-        if (is_null($post)) {
-            return $this->sendError('Post not found.');
-        }
+    
 
         $post->increment('views');
 
@@ -131,9 +113,6 @@ class PostController extends BaseController
             $image->image = url($image->image);
             return $image;
         });
-
-        $post->isLiked = $post->loves()->where('user_id', $userId)->exists();
-        $post->likes = $post->loves()->count();
 
 
         return $this->sendResponse(new PostResource($post), 'Post retrieved successfully.');
@@ -177,7 +156,7 @@ class PostController extends BaseController
             'title' => 'required|string|max:255',
             'category_ids' => 'required|array', // Validasi sebagai array
             'category_ids.*' => 'exists:categories,id', // Setiap Color_id harus valid
-            'user_id' => 'required|exists:users,id',
+            //'user_id' => 'sometimes|exists:users,id',
             'body' => 'required|string',
             'read_time' => 'required|numeric|min:0',
         ]);
@@ -187,14 +166,13 @@ class PostController extends BaseController
         }
 
         $post->title = $input['title'];
-        $post->user_id = $input['user_id'];
+        //$post->user_id = $input['user_id'];
         $post->body = $input['body'];
         $post->read_time = $input['read_time'];
         if ($request->hasFile('img')) {
-            $imagePath = $request->file('img')->store('public/images', 'public');
-            $fullPath = storage_path('app/public/' . $imagePath);
-            $post->img =  '/storage/' .$imagePath;
-            $post->save();
+            $imagePath = $request->file('img')->store('images', 'public');
+            $imageUrl = str_replace('public/', 'storage/', $imagePath);
+            $post->img = '/storage/' . $imagePath;            $post->save();
         }
         $post->save();
 
@@ -217,7 +195,6 @@ class PostController extends BaseController
         return $this->sendResponse([], 'Post deleted successfully.');
     }
 
-
     public function addImage(Request $request, $postId)
     {
         $input = $request->all();
@@ -234,7 +211,7 @@ class PostController extends BaseController
         $post = Post::findOrFail($postId);
 
         // Simpan file gambar ke dalam folder storage (misalnya: public/images)
-        $imagePath = $request->file('image')->store('public/images');
+        $imagePath = $request->file('image')->store('public/images', 'public');
         $imageUrl = str_replace('public/', 'storage/', $imagePath);
 
         $post->images()->create([
@@ -245,11 +222,17 @@ class PostController extends BaseController
         return $this->sendResponse('Photo added successfully.', 'Photo added successfully.');
     }
 
-
     public function deleteImage(Image $image)
     {
         $image->delete();
 
         return $this->sendResponse([], 'Image deleted successfully.');
+    }
+
+    public function deleteComment(Comment $comment)
+    {
+        $comment->delete();
+
+        return $this->sendResponse([], 'Comment deleted successfully.');
     }
 }

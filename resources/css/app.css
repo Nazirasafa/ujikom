@@ -17,7 +17,7 @@
     }
 
     .main-button{
-        @apply btn btn-primary rounded-2xl font-semibold  transition-all duration-500
+        @apply btn btn-primary rounded-2xl font-semibold  transition-all duration-500 bg-purple-700 text-white
     }
 
     .main-card{

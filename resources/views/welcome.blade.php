@@ -3,355 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Profile</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
-        .hero {
-            background: url('assets/images/upacara.jpg') no-repeat center center;
-            background-size: cover;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: aliceblue;
-            padding: 100px 0;
-            background-color: rgba(0, 0, 0, 0.5);        }
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: bold;
-            
+    <title>SMKN 4 Mars</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-purple': {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+     <style>
+        .bg-bubble {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.5;
+            filter: blur(100px);
+            z-index: -1;
+            animation: float 5s infinite alternate ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 50px) scale(1.1); }
+        }
+
+        body {
+            position: relative;
+            overflow-x: hidden;
         }
     </style>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                 width="40px" height="40px" viewBox="0 0 832 850.391" enable-background="new 0 0 832 850.391" xml:space="preserve">
-            <rect x="33.155" y="33.949" fill="#2A04CE" width="766.191" height="109.999"/>
-            <polygon fill="#2A04CE" points="32.655,641.941 32.655,182.448 798.645,182.448 799.145,641.941 415.65,838.439 "/>
-            <rect x="345.351" y="378.446" fill="#0F0F0F" width="145.5" height="93.998"/>
-            <rect x="353.75" y="388.144" fill="#F4F4F4" width="128.799" height="75.199"/>
-            <ellipse fill="#F2F2F2" cx="447.25" cy="467.544" rx="2.5" ry="2.9"/>
-            <ellipse fill="#F2F2F2" cx="461.75" cy="467.544" rx="2.5" ry="2.9"/>
-            <path fill="none" stroke="#2A04CE" stroke-miterlimit="10" d="M413.65,832.439"/>
-            <path fill="none" stroke="#2A04CE" stroke-width="1.1922" stroke-miterlimit="10" d="M415.15,832.439"/>
-            <path fill="#DB1F2A" d="M492.748,214.448H343.551c4.398-5.301,6.6-15.101,13.199-16c43.898-6.2,81.198-6,118.998,0
-                C481.35,199.347,487.149,209.147,492.748,214.448z"/>
-            <rect x="343.552" y="218.448" fill="#DB1F2A" width="149.298" height="14"/>
-            <path fill="#DB1F2A" d="M492.748,362.446c-14.898-6.601-40.601-15.801-73.699-16c-34.1-0.2-60.598,9.3-75.598,16
-                c0-41.699,0-83.3,0-124.999h149.297V362.446z"/>
-            <ellipse fill="#2A04CE" cx="419.049" cy="290.447" rx="8.5" ry="9"/>
-            <polygon fill="#0F0F0F" points="441.649,498.443 397.65,498.443 402.65,467.444 436.649,467.444 "/>
-            <rect x="406.75" y="336.446" fill="#DB1F2A" width="24.6" height="209.997"/>
-            <rect x="358.651" y="495.443" fill="#DB1F2A" width="122.799" height="59"/>
-            <ellipse fill="#DB1F2A" cx="419.549" cy="527.443" rx="47.699" ry="39"/>
-            <ellipse fill="#2A04CE" cx="420.049" cy="527.443" rx="18" ry="19"/>
-            <ellipse fill="#DB1F2A" cx="420.049" cy="527.443" rx="8.5" ry="9"/>
-            <path fill="#DB1F2A" d="M549.448,361.446h-39.699c6-15.801,13-39.699,14.201-69.6c1.601-39-7.5-69.799-14.201-87.398
-                c13.201,0,26.5,0,39.699,0c4.603,23.299,8.301,52.999,7.603,87.398C556.448,318.546,553.248,342.045,549.448,361.446z"/>
-            <path fill="#DB1F2A" d="M763.946,232.448H528.649c-6.199,0-11.301-5.4-11.301-12v-11c0-6.601,5.102-5,11.301-5h235.197
-                c6.199,0,11.299,5.398,11.299,12v4C775.246,227.047,770.147,232.448,763.946,232.448z"/>
-            <path fill="#DB1F2A" d="M717.946,275.447H539.748c-6.6,0-12-5.4-12-12v-4c0-6.601,5.4-12,12-12h178.197c6.603,0,12,5.399,12,12v4
-                C729.946,270.046,724.547,275.447,717.946,275.447z"/>
-            <path fill="#DB1F2A" d="M664.047,318.446H539.748c-6.601,0-12-5.399-12-12v-4c0-6.601,5.399-12,12-12h124.299c6.6,0,12,5.399,12,12
-                v4C676.047,313.046,670.647,318.446,664.047,318.446z"/>
-            <path fill="#DB1F2A" d="M625.348,361.446h-95c-6.6,0-12-5.4-12-12v-4c0-6.601,5.4-12,12-12h95c6.6,0,12,5.399,12,12v4
-                C637.348,356.045,631.948,361.446,625.348,361.446z"/>
-            <path fill="#DB1F2A" d="M283.052,361.446h39.698c-6-15.801-13-39.699-14.198-69.6c-1.601-39,7.5-69.799,14.198-87.398
-                c-13.198,0-26.498,0-39.698,0c-4.601,23.299-8.3,52.999-7.601,87.398C276.052,318.546,279.252,342.045,283.052,361.446z"/>
-            <path fill="#DB1F2A" d="M68.554,232.448h235.197c6.2,0,11.301-5.4,11.301-12v-11c0-6.601-5.101-5-11.301-5H68.554
-                c-6.199,0-11.299,5.398-11.299,12v4C57.255,227.047,62.354,232.448,68.554,232.448z"/>
-            <path fill="#DB1F2A" d="M114.554,275.447h178.198c6.6,0,11.999-5.4,11.999-12v-4c0-6.601-5.399-12-11.999-12H114.554
-                c-6.601,0-12,5.399-12,12v4C102.554,270.046,107.953,275.447,114.554,275.447z"/>
-            <path fill="#DB1F2A" d="M168.453,318.446h124.299c6.6,0,11.999-5.399,11.999-12v-4c0-6.601-5.399-12-11.999-12H168.453
-                c-6.601,0-12,5.399-12,12v4C156.453,313.046,161.853,318.446,168.453,318.446z"/>
-            <path fill="#DB1F2A" d="M207.153,361.446h94.998c6.601,0,12-5.4,12-12v-4c0-6.601-5.399-12-12-12h-94.998c-6.601,0-12,5.399-12,12v4
-                C195.153,356.045,200.553,361.446,207.153,361.446z"/>
-            <g>
-                <path fill="#FF9028" d="M566.448,535.443c-17.5,68.899-73.098,118.698-136.998,123.998
-                    c-72.999,6.102-142.998-46.999-162.498-126.998h57.699c7.3,51.8,50.199,89.1,97.298,86.999c43.3-1.899,80.898-36.8,88.8-83.999
-                    H566.448z"/>
-                <rect x="545.649" y="535.443" fill="#FF9028" width="41.601" height="15"/>
-                <path fill="#FF9028" d="M537.149,562.442c2.799-1.999,40.601,18,40.601,18l-3.802,16h-50.998L537.149,562.442z"/>
-                <path fill="#FF9028" d="M503.149,613.442c1.9-1,26.5,29.999,26.5,29.999l-19.801,16l-32.199-22.999L503.149,613.442z"/>
-                <rect x="243.852" y="532.443" fill="#FF9028" width="41.6" height="15"/>
-                <path fill="#FF9028" d="M293.951,559.443c-2.801-2-40.6,17.999-40.6,17.999l3.8,16h50.999L293.951,559.443z"/>
-                <path fill="#FF9028" d="M327.951,610.442c-1.899-1-26.5,30-26.5,30l19.8,15.999l32.1-22.999L327.951,610.442z"/>
-                <polygon fill="#FF9028" points="431.35,650.441 431.35,678.441 406.75,678.441 406.75,645.441 	"/>
-            </g>
-            <g>
-                <path fill="#FFFFFF" d="M231.052,731.44c13-8.999,50.801-32.6,103-29.999c42.799,2.101,73.498,20.699,86.897,29.999v-29.999
-                    c-16.199-9.6-56.798-30.6-110.498-26c-36.399,3.101-63.899,16.7-79.399,26V731.44z"/>
-                <path fill="#FFFFFF" d="M608.948,731.44c-13-8.999-50.799-32.6-102.998-29.999c-42.801,2.101-73.5,20.699-86.899,29.999v-29.999
-                    c16.2-9.6,56.801-30.6,110.5-26c36.397,3.101,63.897,16.7,79.397,26V731.44z"/>
-            </g>
-            <rect x="116.854" y="56.049" fill="none" width="620.591" height="89.999"/>
-            <g enable-background="new    ">
-                <path fill="#FFFFFF" d="M119.476,99.491l10.135-1.23c1.14,8.233,4.875,12.35,11.204,12.35c3.137,0,5.603-0.843,7.397-2.525
-                    s2.694-3.771,2.694-6.26c0-1.464-0.314-2.708-0.94-3.733c-0.628-1.023-1.583-1.866-2.865-2.524
-                    c-1.282-0.659-4.391-1.764-9.321-3.314c-4.42-1.374-7.654-2.866-9.707-4.476c-2.054-1.609-3.687-3.725-4.896-6.346
-                    c-1.212-2.62-1.816-5.437-1.816-8.452c0-3.513,0.775-6.674,2.33-9.483c1.554-2.811,3.698-4.933,6.437-6.367
-                    c2.736-1.434,6.114-2.152,10.135-2.152c6.043,0,10.761,1.686,14.154,5.055c3.392,3.368,5.188,8.188,5.388,14.458l-10.392,0.57
-                    c-0.456-3.457-1.439-5.874-2.95-7.251c-1.512-1.377-3.664-2.064-6.457-2.064c-2.794,0-4.946,0.599-6.457,1.796
-                    c-1.512,1.197-2.268,2.688-2.268,4.469c0,1.752,0.687,3.228,2.059,4.424c1.371,1.198,4.521,2.516,9.453,3.95
-                    c5.216,1.554,8.984,3.188,11.307,4.901s4.096,3.925,5.321,6.635c1.225,2.71,1.838,5.997,1.838,9.863
-                    c0,5.595-1.675,10.296-5.024,14.104c-3.351,3.809-8.589,5.711-15.716,5.711C127.914,121.596,120.901,114.228,119.476,99.491z"/>
-                <path fill="#FFFFFF" d="M175.806,120.497V56.074h15.521l9.347,43.988l9.272-43.988h15.594v64.423h-9.664V69.741l-10.248,50.756
-                    h-9.984l-10.172-50.756v50.756H175.806z"/>
-                <path fill="#FFFFFF" d="M241.843,120.497V56.074h10.349v28.678l21.014-28.678h13.986l-19.385,25.108l20.411,39.314h-13.433
-                    l-14.181-30.275l-8.414,10.808v19.468H241.843z"/>
-                <path fill="#FFFFFF" d="M325.552,120.497V56.074h10.092l21.039,43.021V56.074h9.664v64.423h-10.435l-20.696-42.011v42.011H325.552z
-                    "/>
-                <path fill="#FFFFFF" d="M383.25,120.497V56.074h38.145v10.897h-27.796v14.282h25.83V92.11h-25.83v17.489h28.736v10.898H383.25z"/>
-                <path fill="#FFFFFF" d="M461.002,96.855V85.956h22.365v25.664c-2.252,2.725-5.445,5.068-9.578,7.031
-                    c-4.135,1.962-8.283,2.943-12.445,2.943c-5.074,0-9.551-1.281-13.426-3.845c-3.879-2.563-6.949-6.401-9.217-11.514
-                    c-2.267-5.112-3.398-11.125-3.398-18.04c0-7.091,1.146-13.154,3.441-18.193s5.272-8.804,8.938-11.294
-                    c3.664-2.49,8.047-3.735,13.15-3.735c6.129,0,11.039,1.604,14.729,4.813s6.065,7.917,7.121,14.128l-10.264,2.417
-                    c-0.771-3.312-2.181-5.845-4.232-7.604c-2.052-1.758-4.506-2.637-7.354-2.637c-4.42,0-7.998,1.765-10.734,5.295
-                    c-2.736,3.531-4.104,8.914-4.104,16.149c0,7.764,1.481,13.667,4.446,17.71c2.537,3.486,5.974,5.229,10.308,5.229
-                    c2.022,0,4.127-0.488,6.307-1.467c2.182-0.978,4.127-2.313,5.838-4.008v-8.148h-11.89V96.855z"/>
-                <path fill="#FFFFFF" d="M498.946,120.497V56.074h38.146v10.897h-27.798v14.282h25.83V92.11h-25.83v17.489h28.736v10.898H498.946z"
-                    />
-                <path fill="#FFFFFF" d="M552.795,120.497V56.074h21.852c5.588,0,9.578,0.579,11.973,1.735c2.396,1.158,4.363,3.164,5.902,6.021
-                    c1.539,2.856,2.31,6.277,2.31,10.261c0,5.039-1.177,9.096-3.527,12.172s-5.695,5.01-10.027,5.801
-                    c2.224,1.642,4.062,3.436,5.517,5.384c1.453,1.948,3.436,5.441,5.943,10.48l6.243,12.568h-12.383l-7.51-14.02
-                    c-2.703-5.067-4.539-8.239-5.511-9.514c-0.969-1.274-1.993-2.153-3.077-2.637c-1.084-0.484-2.822-0.726-5.218-0.726h-2.139v26.896
-                    H552.795z M563.143,83.321h7.697c4.705,0,7.697-0.212,8.979-0.638c1.283-0.424,2.324-1.28,3.121-2.57
-                    c0.8-1.289,1.197-3.002,1.197-5.142c0-2.05-0.397-3.698-1.197-4.943c-0.797-1.245-1.881-2.103-3.25-2.571
-                    c-0.969-0.322-3.776-0.483-8.424-0.483h-8.125L563.143,83.321L563.143,83.321z"/>
-                <path fill="#FFFFFF" d="M610.237,120.497V56.074h10.348v64.423H610.237z"/>
-                <path fill="#FFFFFF" d="M679.535,120.497v-12.964h-21.041V96.723l22.281-40.869h8.295v40.825h6.371v10.854h-6.371v12.964H679.535z
-                     M679.535,96.679V74.686l-11.803,21.993H679.535z"/>
-            </g>
-            <rect x="309.151" y="747.14" fill="none" width="223.299" height="33.3"/>
-            <g enable-background="new    ">
-                <path fill="#FFFFFF" d="M311.356,768.587v-21.476h4.22v9.536l8.523-9.536h5.674l-7.868,8.364l8.296,13.11h-5.46l-5.744-10.078
-                    l-3.42,3.589v6.489L311.356,768.587L311.356,768.587z"/>
-                <path fill="#FFFFFF" d="M333.57,757.981c0-2.188,0.318-4.022,0.955-5.508c0.476-1.094,1.124-2.075,1.945-2.944
-                    c0.822-0.868,1.723-1.514,2.701-1.934c1.302-0.566,2.804-0.85,4.505-0.85c3.079,0,5.542,0.98,7.391,2.943
-                    c1.85,1.963,2.772,4.692,2.772,8.188c0,3.467-0.917,6.18-2.751,8.138s-4.286,2.938-7.355,2.938c-3.106,0-5.578-0.975-7.412-2.924
-                    C334.487,764.083,333.57,761.399,333.57,757.981z M337.918,757.835c0,2.432,0.545,4.274,1.64,5.528
-                    c1.092,1.257,2.479,1.884,4.162,1.884c1.682,0,3.062-0.623,4.141-1.867c1.078-1.246,1.618-3.113,1.618-5.604
-                    c0-2.461-0.525-4.297-1.575-5.508c-1.051-1.211-2.444-1.815-4.184-1.815s-3.143,0.612-4.205,1.838
-                    C338.449,753.516,337.918,755.364,337.918,757.835z"/>
-                <path fill="#FFFFFF" d="M363.88,768.587v-17.842h-6.201v-3.634h16.606v3.634h-6.188v17.842H363.88z"/>
-                <path fill="#FFFFFF" d="M397.895,768.587h-4.59l-1.824-4.878h-8.354l-1.726,4.878h-4.476l8.14-21.476h4.461L397.895,768.587z
-                     M390.127,760.091l-2.879-7.969l-2.822,7.969H390.127z"/>
-                <path fill="#FFFFFF" d="M412.345,747.112h8.353c1.654,0,2.887,0.071,3.699,0.214c0.813,0.142,1.539,0.437,2.182,0.886
-                    c0.642,0.449,1.176,1.048,1.604,1.794c0.428,0.748,0.641,1.585,0.641,2.513c0,1.006-0.264,1.929-0.791,2.77
-                    c-0.526,0.84-1.241,1.47-2.145,1.89c1.272,0.381,2.252,1.03,2.936,1.948c0.685,0.918,1.027,1.997,1.027,3.236
-                    c0,0.978-0.221,1.928-0.664,2.85c-0.44,0.924-1.045,1.661-1.812,2.213c-0.764,0.552-1.707,0.891-2.827,1.018
-                    c-0.703,0.078-2.4,0.127-5.091,0.146h-7.112V747.112z M416.565,750.686v4.966h2.767c1.643,0,2.664-0.023,3.063-0.072
-                    c0.721-0.088,1.289-0.345,1.703-0.771c0.412-0.424,0.619-0.982,0.619-1.677c0-0.664-0.178-1.203-0.533-1.618
-                    c-0.357-0.415-0.887-0.667-1.59-0.755c-0.418-0.049-1.621-0.073-3.607-0.073H416.565z M416.565,759.226v5.742h3.904
-                    c1.521,0,2.486-0.044,2.895-0.132c0.627-0.117,1.14-0.402,1.533-0.857c0.394-0.453,0.59-1.062,0.59-1.823
-                    c0-0.645-0.151-1.19-0.455-1.641c-0.305-0.449-0.743-0.776-1.317-0.98c-0.576-0.205-1.822-0.309-3.742-0.309H416.565z"/>
-                <path fill="#FFFFFF" d="M434.6,757.981c0-2.188,0.318-4.022,0.955-5.508c0.475-1.094,1.125-2.075,1.945-2.944
-                    c0.822-0.868,1.723-1.514,2.701-1.934c1.303-0.566,2.805-0.85,4.506-0.85c3.078,0,5.541,0.98,7.391,2.943
-                    c1.848,1.963,2.771,4.692,2.771,8.188c0,3.467-0.916,6.18-2.75,8.138s-4.287,2.938-7.355,2.938c-3.106,0-5.578-0.975-7.412-2.924
-                    C435.518,764.083,434.6,761.399,434.6,757.981z M438.948,757.835c0,2.432,0.547,4.274,1.642,5.528
-                    c1.092,1.257,2.479,1.884,4.162,1.884c1.682,0,3.061-0.623,4.141-1.867c1.078-1.246,1.617-3.113,1.617-5.604
-                    c0-2.461-0.524-4.297-1.574-5.508c-1.051-1.211-2.444-1.815-4.184-1.815c-1.74,0-3.144,0.612-4.205,1.838
-                    C439.481,753.516,438.948,755.364,438.948,757.835z"/>
-                <path fill="#FFFFFF" d="M469.928,760.691v-3.617h9.094v8.555c-0.883,0.879-2.164,1.652-3.842,2.322
-                    c-1.676,0.668-3.375,1.003-5.096,1.003c-2.187,0-4.091-0.472-5.716-1.413c-1.625-0.942-2.846-2.29-3.664-4.043
-                    c-0.815-1.753-1.227-3.66-1.227-5.722c0-2.235,0.457-4.224,1.368-5.962c0.912-1.737,2.248-3.07,4.007-3.999
-                    c1.34-0.713,3.008-1.068,5.004-1.068c2.594,0,4.618,0.56,6.077,1.677c1.459,1.119,2.396,2.664,2.816,4.637l-4.191,0.807
-                    c-0.295-1.056-0.848-1.888-1.659-2.497c-0.813-0.61-1.828-0.916-3.043-0.916c-1.845,0-3.312,0.601-4.398,1.802
-                    s-1.633,2.982-1.633,5.347c0,2.549,0.553,4.461,1.654,5.734c1.102,1.274,2.547,1.912,4.334,1.912c0.883,0,1.77-0.179,2.657-0.535
-                    c0.89-0.355,1.65-0.788,2.287-1.296v-2.726L469.928,760.691L469.928,760.691z"/>
-                <path fill="#FFFFFF" d="M484.102,757.981c0-2.188,0.318-4.022,0.955-5.508c0.475-1.094,1.123-2.075,1.945-2.944
-                    c0.822-0.868,1.723-1.514,2.701-1.934c1.301-0.566,2.803-0.85,4.504-0.85c3.08,0,5.543,0.98,7.391,2.943
-                    c1.85,1.963,2.773,4.692,2.773,8.188c0,3.467-0.918,6.18-2.752,8.138s-4.285,2.938-7.355,2.938c-3.107,0-5.578-0.975-7.412-2.924
-                    C485.018,764.083,484.102,761.399,484.102,757.981z M488.449,757.835c0,2.432,0.545,4.274,1.64,5.528
-                    c1.092,1.257,2.479,1.884,4.162,1.884c1.682,0,3.063-0.623,4.141-1.867c1.078-1.246,1.619-3.113,1.619-5.604
-                    c0-2.461-0.524-4.297-1.576-5.508c-1.051-1.211-2.444-1.815-4.184-1.815s-3.142,0.612-4.205,1.838
-                    C488.981,753.516,488.449,755.364,488.449,757.835z"/>
-                <path fill="#FFFFFF" d="M509.721,768.587v-21.476h8.881c2.234,0,3.855,0.193,4.869,0.578c1.012,0.388,1.82,1.072,2.43,2.06
-                    c0.607,0.985,0.912,2.113,0.912,3.384c0,1.611-0.461,2.942-1.383,3.991c-0.922,1.051-2.299,1.712-4.133,1.984
-                    c0.912,0.547,1.664,1.147,2.258,1.803c0.594,0.654,1.395,1.815,2.402,3.485l2.551,4.189h-5.045l-3.051-4.673
-                    c-1.084-1.67-1.824-2.723-2.223-3.157c-0.4-0.434-0.822-0.732-1.271-0.893c-0.447-0.162-1.154-0.242-2.123-0.242h-0.854v8.965
-                    L509.721,768.587L509.721,768.587z M513.942,756.194h3.121c2.023,0,3.287-0.088,3.791-0.264s0.898-0.479,1.185-0.908
-                    c0.286-0.429,0.428-0.967,0.428-1.61c0-0.724-0.188-1.307-0.563-1.75c-0.377-0.444-0.905-0.727-1.59-0.844
-                    c-0.342-0.049-1.369-0.072-3.078-0.072h-3.293V756.194L513.942,756.194z"/>
-            </g>
-            <g>
-                <path stroke="#000000" stroke-width="0.5497" stroke-miterlimit="10" d="M535.649,470.444h-20c-6.6,0-12-5.399-12-12v-67.998
-                    c0-6.602,5.4-12,12-12h20c6.601,0,12,5.398,12,12v67.998C547.649,465.044,542.248,470.444,535.649,470.444z"/>
-                <path fill="#F4F4F4" d="M540.049,396.745h-28.801c-2.4,0-4.3-1.9-4.3-4.3l0,0c0-2.4,1.898-4.302,4.3-4.302h28.801
-                    c2.397,0,4.299,1.9,4.299,4.302l0,0C544.348,394.845,542.448,396.745,540.049,396.745z"/>
-                <path fill="#F4F4F4" d="M540.049,406.445h-28.801c-2.4,0-4.3-1.899-4.3-4.301l0,0c0-2.398,1.898-4.3,4.3-4.3h28.801
-                    c2.397,0,4.299,1.9,4.299,4.3l0,0C544.348,404.445,542.448,406.445,540.049,406.445z"/>
-                <path fill="#F4F4F4" d="M540.049,416.045h-28.801c-2.4,0-4.3-1.9-4.3-4.301l0,0c0-2.399,1.898-4.3,4.3-4.3h28.801
-                    c2.397,0,4.299,1.899,4.299,4.3l0,0C544.348,414.144,542.448,416.045,540.049,416.045z"/>
-                
-                    <ellipse fill="none" stroke="#F4F4F4" stroke-width="1.4929" stroke-miterlimit="10" cx="525.649" cy="442.944" rx="7.801" ry="6.7"/>
-                <path fill="#F4F4F4" stroke="#000000" stroke-width="0.5497" stroke-miterlimit="10" d="M541.448,460.744h-30.799
-                    c-0.801,0-1.4-0.602-1.4-1.4l0,0c0-0.8,0.601-1.399,1.4-1.399h30.799c0.801,0,1.4,0.601,1.4,1.399l0,0
-                    C542.848,460.144,542.248,460.744,541.448,460.744z"/>
-                <path fill="#F4F4F4" stroke="#000000" stroke-width="0.5497" stroke-miterlimit="10" d="M541.448,463.544h-30.799
-                    c-0.801,0-1.4-0.601-1.4-1.4l0,0c0-0.8,0.601-1.398,1.4-1.398h30.799c0.801,0,1.4,0.6,1.4,1.398l0,0
-                    C542.848,462.944,542.248,463.544,541.448,463.544z"/>
-            </g>
-            <g id="Layer_1_copy" display="none">
-            </g>
-            </svg>
-            
-            SMKN 4 BOGOR
-          </a>
+<body class="relative text-gray-800 bg-gray-50">
 
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav d-lg-none">
-              <!-- Mobile view dropdown items -->
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown link
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-            </ul>
-      
-            <!-- Desktop view items -->
-            <ul class="navbar-nav d-none d-lg-flex">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">School Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Gallery</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">School News</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Location</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  More
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="login">Login</a></li>
-                  <li><a class="dropdown-item" href="register">Register</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
+    <div class="absolute inset-0 overflow-hidden pointer-events-none -z-50">
+        <!-- Scattered Background Balls -->
+        <div class="bg-purple-500 bg-bubble" style="top: 5%; left: 2%; width: 250px; height: 250px;"></div>
+        <div class="bg-purple-500 bg-bubble" style="top: 15%; right: 5%; width: 300px; height: 300px;"></div>
+        <div class="bg-purple-500 bg-bubble" style="top: 30%; left: 10%; width: 200px; height: 200px;"></div>
+        <div class="bg-purple-500 bg-bubble" style="top: 45%; right: 15%; width: 280px; height: 280px;"></div>
+        <div class="bg-purple-500 bg-bubble" style="top: 60%; left: 5%; width: 220px; height: 220px;"></div>
+        <div class="bg-purple-500 bg-bubble" style="top: 75%; right: 8%; width: 260px; height: 260px;"></div>
+        <div class="bg-purple-500 bg-bubble" style="top: 85%; left: 15%; width: 180px; height: 180px;"></div>
+        <div class="bg-purple-500 bg-bubble" style="top: 90%; right: 20%; width: 240px; height: 240px;"></div>
+    </div>
+    <!-- Navigation -->
+    <nav class="relative z-10 bg-white shadow-md">
+        <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex justify-between w-full">
+                    <div class="flex items-center flex-shrink-0">
+                        <a href="{{ route('homepage') }}">
+                            <x-logo-purple/>
+                        </a>
+                    </div>
+                    <div class="items-center hidden sm:flex sm:space-x-4">
+                        <a href="#profile" class="px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-purple-600">School Profile</a>
+                        <a href="#gallery" class="px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-purple-600">Gallery</a>
+                        <a href="#news" class="px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-purple-600">School News</a>
+                        <a href="#events" class="px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-purple-600">School Events</a>
+                        <a href="#location" class="px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-purple-600">Location</a>
+                        <a href="{{route('login')}}" class="px-3 py-2 text-sm font-medium text-gray-600 hover:text-brand-purple-600">Login</a>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-          <span class="navbar-text">
-            Education is your key to endless possibilities.
-          </span>
-        </div>  
-      </nav>
-    
     <!-- Hero Section -->
-    <section class="text-center hero">
-        <h1>SMKN 4 Bogor</h1>
-        <p class="lead"> Empowering Future Generations</p>
+    <section class="relative h-[75vh] flex items-center justify-center text-center bg-cover bg-center" style="background-image: url('assets/images/upacara.jpg')">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="relative z-10 px-4 text-white">
+            <h1 class="mb-4 font-serif text-5xl font-bold">SMKN 4 Mars</h1>
+            <p class="text-lg italic">Empowering Future Generations</p>
+        </div>
     </section>
 
     <!-- School Profile Section -->
-    <section class="container py-5" id="school-profile">
-        <h2 class="mb-4 text-center">School Profile</h2>
-        <div class="row">
-            <div class="col-md-6">
-                <img src="assets/images/drone.jpg" alt="School Building" class="rounded img-fluid w-75">
+    <section class="max-w-6xl px-4 py-16 mx-auto" id="profile">
+        <h2 class="mb-12 text-3xl font-bold text-center text-brand-purple-600">School Profile</h2>
+        <div class="grid items-center gap-12 md:grid-cols-2">
+            <div>
+                <img src="assets/images/drone.jpg" alt="School Building" class="w-full rounded-lg shadow-lg">
             </div>
-            <div class="col-md-6">
-                <h3>Our Vision & Mission</h3>
-                <p>Visi kami adalah Terwujudnya SMK Pusat Keunggulan melalui terciptanya pelajar pancasila yang berbasis teknologi, berwawasan lingkungan dan berkewirausahaan.</p>
-                <h3>History</h3>
-                <p>Merupakan sekolah kejuruan berbasis Teknologi Informasi dan Komunikasi. Sekolah ini didirikan dan dirintis pada tahun 2008 kemudian dibuka pada tahun 2009 yang saat ini terakreditasi A</p>
+            <div>
+                <h3 class="mb-4 text-2xl font-semibold text-brand-purple-600">Our Vision & Mission</h3>
+                <p class="mb-6 text-gray-700">Visi kami adalah Terwujudnya SMK Pusat Keunggulan melalui terciptanya pelajar pancasila yang berbasis teknologi, berwawasan lingkungan dan berkewirausahaan.</p>
+                
+                <h3 class="mb-4 text-2xl font-semibold text-brand-purple-600">History</h3>
+                <p class="text-gray-700">Merupakan sekolah kejuruan berbasis Teknologi Informasi dan Komunikasi. Sekolah ini didirikan dan dirintis pada tahun 2008 kemudian dibuka pada tahun 2009 yang saat ini terakreditasi A</p>
             </div>
         </div>
     </section>
 
     <!-- Gallery Section -->
-    <section class="container py-5" id="gallery">
-        <h2 class="mb-4 text-center">Gallery</h2>
-        <div class="row">
-            @foreach ($galleries as $gallery)
-                <div class="mb-4 col-md-4">
-                    <img src="{{ $gallery->img }}" class="img-fluid">
-                </div>
-            @endforeach
+    <section class="py-16" id="gallery">
+        <div class="max-w-6xl px-4 mx-auto">
+            <h2 class="mb-12 text-3xl font-bold text-center text-brand-purple-600">Gallery</h2>
+            <div class="grid gap-6 md:grid-cols-3">
+                @foreach ($galleries as $gallery)
+                    <a href="{{route('show.gallery', $gallery)}}" class="overflow-hidden transition-transform duration-500 rounded-lg shadow-md hover:scale-105">
+                        <img src="{{ $gallery->img }}" class="object-cover w-full h-64">
+                    </a>
+                @endforeach
+            </div>
+            <div class="w-full mt-10 text-lg font-semibold text-center text-purple-600 underline">
+                <a href={{route('galleries')}} >See More Galleries</a>
+            </div>
         </div>
     </section>
 
     <!-- News Section -->
-    <section class="container py-5" id="news">
-        <h2 class="mb-4 text-center">School News</h2>
-        <div class="row">
-            @foreach ($newses as $news)
-                <div class="mb-4 col-md-4">
-                    <div class="card">
-                        <img src={{ $news->img }} class="card-img-top" alt="News 1">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ Str::limit($news->title, 12) }}</h5>
-                            <p class="card-text">{{ Str::limit($news->body, 80) }}</p>
-                            <a href="#" class="btn btn-primary">Read More</a>
+    <section class="py-16" id="news">
+        <div class="max-w-6xl px-4 mx-auto">
+            <h2 class="mb-12 text-3xl font-bold text-center text-brand-purple-600">School News</h2>
+            <div class="grid gap-6 md:grid-cols-3">
+                @foreach ($newses as $news)
+                    <div class="overflow-hidden bg-white rounded-lg shadow-md">
+                        <img src="{{ $news->img }}" class="object-cover w-full h-48">
+                        <div class="p-6">
+                            <h5 class="mb-3 text-xl font-semibold text-brand-purple-600">{{ Str::limit($news->title, 100) }}</h5>
+                            <p class="mb-4 text-gray-600">{{ Str::limit($news->body, 80) }}</p>
+                            <a href="{{route('show.news', $news)}}" class="inline-block px-4 py-2 text-white transition rounded-md bg-brand-purple-500 hover:bg-brand-purple-600">Read More</a>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
+            <div class="w-full mt-10 text-lg font-semibold text-center text-purple-600 underline">
+                <a href={{route('news')}} >See More News</a>
+            </div>
         </div>
     </section>
 
-    <!-- Event Section -->
-    <section class="container py-5" id="events">
-        <h2 class="mb-5 text-center">Upcoming Events</h2>
-        <div class="row">
-            @foreach ($events as $event)
-                <div class="mb-4 col-lg-4 col-md-6">
-                    <div class="shadow-sm card h-100">
-                        <img src="{{ $event->image }}" class="card-img-top" alt="{{ $event->name }}">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">{{ Str::limit($event->name, 25) }}</h5>
-                            <p class="card-text">{{ Str::limit($event->description, 100) }}</p>
-                            <small class="mb-3 text-muted">Date: {{ date('d F Y', strtotime($event->date)) }}</small>
-                            <a href="#" class="mt-auto btn btn-outline-primary">Learn More</a>
+    <!-- Events Section -->
+    <section class="py-16" id="events">
+        <div class="max-w-6xl px-4 mx-auto">
+            <h2 class="mb-12 text-3xl font-bold text-center text-brand-purple-600">Upcoming Events</h2>
+            <div class="grid gap-6 md:grid-cols-3">
+                @foreach ($events as $event)
+                    <div class="flex flex-col overflow-hidden bg-white rounded-lg shadow-md">
+                        <img src="{{ $event->img }}" class="object-contain w-full h-48">
+                        <div class="flex flex-col flex-grow p-6">
+                            <h5 class="mb-3 text-xl font-semibold text-brand-purple-600">{{ Str::limit($event->name, 25) }}</h5>
+                            <p class="flex-grow mb-4 text-gray-600">{{ Str::limit($event->description, 100) }}</p>
+                            <small class="mb-4 text-gray-500">Date: {{ date('d F Y', strtotime($event->date)) }}</small>
+                            <a href="{{route('show.event', $event)}}" class="inline-block px-4 py-2 transition border rounded-md border-brand-purple-500 text-brand-purple-500 hover:bg-brand-purple-500 hover:text-white">Learn More</a>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
+            <div class="w-full mt-10 text-lg font-semibold text-center text-purple-600 underline">
+                <a href={{route('events')}} >See More Events</a>
+            </div>
         </div>
     </section>
-    
-    
 
     <!-- Location Section -->
-    <section class="container py-5" id="location">
-        <h2 class="mb-4 text-center">Our Location</h2>
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" 
+    <section class="py-16" id="location">
+        <div class="max-w-6xl px-4 mx-auto">
+            <h2 class="mb-12 text-3xl font-bold text-center text-brand-purple-600">Our Location</h2>
+            <div class="flex justify-center">
+                <div class="w-full md:w-3/4 aspect-w-16 aspect-h-9">
+                    <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.664621825812!2d-122.0838514!3d37.3874741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb9a6b906fce5%3A0x35df83f0be9310f8!2sGoogleplex!5e0!3m2!1sen!2sus!4v1614519350369!5m2!1sen!2sus" 
-                        allowfullscreen></iframe>
+                        class="w-full h-full rounded-lg shadow-md"
+                        allowfullscreen>
+                    </iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <!-- Footer -->
+    <footer class="py-8 text-white bg-brand-purple-600">
+        <div class="max-w-6xl px-4 mx-auto text-center">
+            <p>&copy; 2024 SMKN 4 Mars. All Rights Reserved.</p>
+            <p class="mt-2 text-sm">Education is your key to endless possibilities.</p>
+        </div>
+    </footer>
 </body>
 </html>

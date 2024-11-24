@@ -16,11 +16,18 @@ class User extends Authenticatable
      * 
      * @var array
      */
+
+     const ROLE_SUPERADMIN = 1;
+     const ROLE_ADMIN = 2;
+     const ROLE_USER = 3;
+     
     protected $fillable = [
+        'profile_pic',
         'name',
         'email',
-        'usertype',
+        'role',
         'password',
+
     ];
   
 

@@ -44,8 +44,8 @@ class EventController extends BaseController
             'img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'social_media' => 'required|string',
             'date' => 'required|date_format:Y-m-d|after_or_equal:1920-01-01',
-            'time_start' => 'required|date_format:H:i:s',
-            'time_end' => 'required|date_format:H:i:s|after:time_start',
+            'time_start' => 'required|date_format:H:i',
+            'time_end' => 'required|date_format:H:i|after:time_start',
 
         ]);
 
@@ -56,9 +56,8 @@ class EventController extends BaseController
         $event = Event::create($input);
 
         if ($request->hasFile('img')) {
-            $imagePath = $request->file('img')->store('public/images', 'public');
-            $fullPath = storage_path('app/public/' . $imagePath);
-            $event->img =  '/storage/' .$imagePath;
+            $imagePath = $request->file('img')->store('images', 'public');
+            $event->img = '/storage/' . $imagePath;            
             $event->save();
         }
 
@@ -137,10 +136,9 @@ class EventController extends BaseController
         
 
         if ($request->hasFile('img')) {
-            $imagePath = $request->file('img')->store('public/images', 'public');
-            $fullPath = storage_path('app/public/' . $imagePath);
-            $event->img =  '/storage/' .$imagePath;
-        }
+            $imagePath = $request->file('img')->store('images', 'public');
+            $imageUrl = str_replace('public/', 'storage/', $imagePath);
+            $event->img = '/storage/' . $imagePath;        }
 
         $event->save();
 

@@ -7,8 +7,7 @@
 
         <link rel="icon" type="image/png" href="/assets/images/logo.png">
 
-
-        <title>4Hype</title>
+        <title>Camenation</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">

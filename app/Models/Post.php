@@ -12,7 +12,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['img','title', 'category_id', 'user_id', 'body', 'read_time', 'created_at'];
+    protected $fillable = ['img','title','views', 'category_id', 'user_id', 'body', 'read_time', 'created_at'];
 
     public function categories(): BelongsToMany
     {
@@ -22,17 +22,6 @@ class Post extends Model
     public function images(): HasMany
     {
         return $this->hasMany(Image::class);
-    }
-
-    public function comments(): HasMany
-    {
-        return $this->hasMany(Comment::class);
-    }
-
-    
-    public function loves(): HasMany
-    {
-        return $this->hasMany(Love::class);
     }
 
     public function user()

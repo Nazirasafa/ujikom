@@ -1,63 +1,86 @@
+
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-2xl font-semibold leading-tight text-blue-500">
-            {{ __('Create Event') }}
+        <h2 class="text-xl font-semibold leading-tight text-gray-800">
+            {{ __('Create News') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
-        <div class="mx-auto max-w-2xl sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-xl sm:rounded-2xl">
-                <div class="p-8 text-gray-900">
-                    <a class="secondary-button" href="{{ route('dashboard.events') }}">
+                <div class="p-6 text-gray-900">
+                    <a class="secondary-button" href="{{ route('dashboard.news') }}">
                         <x-heroicon-o-arrow-left class="w-5" />
                         Back
                     </a>
-                    <form action="{{ route('dashboard.events.store') }}" method="POST" enctype="multipart/form-data" class="mt-6 space-y-6">
+                    <form action={{ route('dashboard.news.store') }} method="POST" enctype="multipart/form-data">
                         @csrf
 
-                        {{-- Event Name --}}
-                        <div class="w-full">
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Event's Name</label>
-                            <input type="text" name="name" id="name" placeholder="Type here"
-                                class="w-full input input-bordered" value="{{ old('name') }}" />
-                            @error('name')
-                                <span class="text-red-500 text-sm">{{ $message }}</span>
-                            @enderror
+                        <div class="input-cluster">
+                            {{-- name --}}
+                            <label class="w-full form-control">
+                                <div class="label">
+                                    <span class="label-text">News Title</span>
+                                </div>
+                                <input type="text" name="title" placeholder="Type the news title here"
+                                    class="w-full input input-bordered" 
+                                    value="{{ old('title') }}" required/>
+                                @error('title')
+                                    <div class="label error">
+                                        <span class="text-red-500 label-text-alt">{{ $message }}</span>
+                                    </div>
+                                @enderror
+                            </label>
+
+                            {{-- read time --}}
+                            <label class="w-full form-control">
+                                <div class="label">
+                                    <span class="label-text">Read Time</span>
+                                </div>
+                                <input type="number" name="read_time" placeholder="Time needed to read this news in minutes (ex. 5)"
+                                    class="w-full input input-bordered"
+                                    value="{{ old('read_time') }}" required/>
+                                @error('read_time')
+                                    <div class="label error">
+                                        <span class="text-red-500 label-text-alt">{{ $message }}</span>
+                                    </div>
+                                @enderror
+                            </label>
                         </div>
 
-                        {{-- Event Description --}}
-                        <div class="w-full">
-                            <label for="description" class="block text-sm font-medium text-gray-700 mb-2">Event Description</label>
-                            <textarea name="description" id="description" placeholder="Describe the event"
-                                class="w-full input input-bordered h-24" rows="4">{{ old('description') }}</textarea>
-                            @error('description')
-                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                        {{-- desc --}}
+                        <label class="form-control">
+                            <div class="label">
+                                <span class="label-text">News Body</span>
+                            </div>
+                            <textarea name="body" class="h-24 textarea textarea-bordered" 
+                                placeholder="Type the news here" required>{{ old('body') }}</textarea>
+                            @error('body')
+                                <div class="label error">
+                                    <span class="text-red-500 label-text-alt">{{ $message }}</span>
+                                </div>
                             @enderror
-                        </div>
+                        </label>
 
-                        {{-- Event Date --}}
-                        <div class="w-full">
-                            <label for="date" class="block text-sm font-medium text-gray-700 mb-2">Event Date</label>
-                            <input type="date" name="date" id="date" class="w-full input input-bordered" value="{{ old('date') }}" />
-                            @error('date')
-                                <span class="text-red-500 text-sm">{{ $message }}</span>
-                            @enderror
-                        </div>
+                        <div class="input-cluster">
+                            {{-- img --}}
+                            <label class="w-full form-control">
+                                <div class="label">
+                                    <span class="label-text">News Thumbnail</span>
+                                </div>
+                                <input type="file" name="img"
+                                    class="w-full file-input file-input-bordered"
+                                    accept="image/*" required/>
+                                @error('img')
+                                    <div class="label error">
+                                        <span class="text-red-500 label-text-alt">{{ $message }}</span>
+                                    </div>
+                                @enderror
+                            </label>
 
-                        {{-- Event Logo --}}
-                        <div class="w-full">
-                            <label for="img" class="block text-sm font-medium text-gray-700 mb-2">Event's Logo</label>
-                            <input type="file" name="img" id="img" class="w-full file-input file-input-bordered" accept="image/*" />
-                            @error('img')
-                                <span class="text-red-500 text-sm">{{ $message }}</span>
-                            @enderror
                         </div>
-
-                        {{-- Submit Button --}}
-                        <div class="flex justify-end pt-4">
-                            <button type="submit" class="px-6 py-2 text-white bg-blue-600 hover:bg-blue-500 rounded-lg main-button">Submit News</button>
-                        </div>
+                        <button class="mt-8 min-w-lg main-button" type="submit">Submit News</button>
                     </form>
                 </div>
             </div>

@@ -136,6 +136,15 @@ class NewsController extends Controller
             ->with('success', 'News deleted successfully.');
     }
 
+    public function destroyComment(Post $news, Comment $comment)
+    {
+        $comment->delete();
+        
+        return redirect()
+            ->route('dashboard.news.show', $news)
+            ->with('success', 'Comment deleted successfully.');
+    }
+
     public function destroyCategory(Post $news, Category $category)
     {
         // Detach the category from the post in the pivot table
